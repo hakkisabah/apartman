@@ -9,7 +9,13 @@ Eğer s3 domainini kullanacaksak(HTTPS desteklemiyor), tüm işlemlerin ücretsi
 Bu uygulama, apartman sakinlerinin otomat ve diğer giderlerini gösteren ve gidere ait dökümantayonu indirebilmesini sağlayan ve benzeri basit ve kullanışlı araçlar içerir.
 
 ## Demo
+Link: https://testapartman.hakkisabah.com
 
+Kullanıcı şifre: `test`
+
+Yönetici şifre: `testyonetici`
+
+Not : Kullanıcı adı bulunmamaktadır gireceğiniz şifreye göre kullanıcı modunuz belirlenmektedir.
 
 
 ## Kullanım hakkında
