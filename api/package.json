@@ -1,0 +1,27 @@
+{
+  "name": "apartmanapi",
+  "version": "1.0.0",
+  "description": "apartman giderlerini gösteren ve yönetebilen ufak bir uygulama",
+  "main": "local.js",
+  "scripts": {
+    "start": "nodemon local.js",
+    "deploy": "serverless deploy"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vendia/serverless-express": "^4.5.3",
+    "aws-sdk": "^2.1062.0",
+    "body-parser": "^1.19.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "express-bearer-token": "^2.4.0",
+    "express-fileupload": "^1.2.1",
+    "helmet": "^5.0.2",
+    "jsonwebtoken": "^8.5.1",
+    "rand-token": "^1.0.1"
+  },
+  "devDependencies": {
+    "dotenv": "^14.2.0"
+  }
+}
