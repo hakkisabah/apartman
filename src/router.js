@@ -59,4 +59,9 @@ const checkAuth = async (user) => {
   }
 }
 
+router.beforeEach((to, from, next) => {
+  document.title = import.meta.env.VITE_AP_ADI + ' Apartmanı'
+  next()
+})
+
 export default router
