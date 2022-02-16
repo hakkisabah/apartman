@@ -88,7 +88,11 @@ export default {
       // Exclude download icon
       const isDownload = event.target.className.split(' ').includes('mdi-download')
       if (!isDownload) {
-        this.$emit('edit', item)
+        this.$emit('edit', item) // for admin
+        if (!this.isPaid){ // run only for unpaid invoices
+          this.$emit('total', item) // for user
+        }
+
       }
     },
     getItemFileLink(invoiceId){

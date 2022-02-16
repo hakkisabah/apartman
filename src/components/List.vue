@@ -12,7 +12,7 @@
             @currentSearch='currentSearch = $event'
             @searchResult='searchResult = $event'></Search>
   </div>
-  <Table @edit='$emit("edit",$event)' :desserts='currentSearch.length > 0 ? searchResult:currentList' :is-paid='selectedIsPaid'></Table>
+  <Table @total='$emit("total",{currentList, item:$event})' @edit='$emit("edit",$event)' :desserts='currentSearch.length > 0 ? searchResult:currentList' :is-paid='selectedIsPaid'></Table>
 </template>
 
 <script>
@@ -23,7 +23,7 @@ import Search from './Search.vue'
 export default {
   name: 'List',
   components: { Table, Search },
-  emits: ['edit', 'selectedIsPaid', 'currentSearch', 'searchResult'],
+  emits: ['edit', 'selectedIsPaid', 'currentSearch', 'searchResult', 'total'],
   setup() {
     const overlay = ref(true)
     const currentSearch = ref('')
