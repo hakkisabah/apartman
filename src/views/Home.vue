@@ -24,10 +24,10 @@ export default {
   methods:{
     showTotal(total){
       const {item} = total
-      const itemTotal = total.currentList.filter(e => e.daire === item.daire).reduce((acc, cur) => acc + cur.tutar, 0)
+      const itemTotal = total.currentList.filter(e => e.daire === item.daire).reduce((acc, cur) => +acc + +cur.tutar, 0)
       this.totalPrice = {
         daire: item.daire,
-        borc:itemTotal,
+        borc: +itemTotal,
       }
       this.TotalPopupDialog = true
     }
