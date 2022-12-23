@@ -1,36 +1,37 @@
 service: apartman
 
 provider:
- name: aws
- runtime: nodejs14.x
- memorySize: 128
- timeout: 10
- stage: api
- region: eu-central-1
-# Dosya yükleme işlemi için gerekli
- apiGateway :
-   binaryMediaTypes :
-     - 'application/pdf'
-     - 'multipart/form-data'
+  name: aws
+  runtime: nodejs14.x
+  memorySize: 128
+  timeout: 10
+  stage: api
+  region: eu-central-1
+  # Dosya yükleme işlemi için gerekli
+  apiGateway:
+    binaryMediaTypes:
+      - "application/pdf"
+      - "multipart/form-data"
 
 functions:
- api:
-   handler: lambda.universal
-   events:
-     - http: ANY {proxy+}
-     - http: ANY /
-   environment :
-     "AWS_BUCKET_NAME" : ${self:custom.secrets.AWS_BUCKET_NAME}
-     "ACCEPT_MIMETYPE" : ${self:custom.secrets.ACCEPT_MIMETYPE}
-     "UPLOAD_FOLDER" : ${self:custom.secrets.UPLOAD_FOLDER}
-     "ITEMS_FILE_NAME" : ${self:custom.secrets.ITEMS_FILE_NAME}
-     "TOTAL_RESIDENT" : ${self:custom.secrets.TOTAL_RESIDENT}
-     "FIX_DEC" : ${self:custom.secrets.FIX_DEC}
-     "AWS_ACC_KEY" : ${self:custom.secrets.AWS_ACC_KEY}
-     "AWS_ACC_SECRET_KEY" : ${self:custom.secrets.AWS_ACC_SECRET_KEY}
-     "USER_PASS" : ${self:custom.secrets.USER_PASS}
-     "ADMIN_PASS" : ${self:custom.secrets.ADMIN_PASS}
-     "JWT_SECRET" : ${self:custom.secrets.JWT_SECRET}
-     "PORT" : ${self:custom.secrets.PORT}
+  api:
+    handler: lambda.universal
+    events:
+      - http: ANY {proxy+}
+      - http: ANY /
+    environment:
+      "AWS_BUCKET_NAME": ${self:custom.secrets.AWS_BUCKET_NAME}
+      "ORIGIN_DOMAIN": ${self:custom.secrets.ORIGIN_DOMAIN}
+      "ACCEPT_MIMETYPE": ${self:custom.secrets.ACCEPT_MIMETYPE}
+      "UPLOAD_FOLDER": ${self:custom.secrets.UPLOAD_FOLDER}
+      "ITEMS_FILE_NAME": ${self:custom.secrets.ITEMS_FILE_NAME}
+      "TOTAL_RESIDENT": ${self:custom.secrets.TOTAL_RESIDENT}
+      "FIX_DEC": ${self:custom.secrets.FIX_DEC}
+      "AWS_ACC_KEY": ${self:custom.secrets.AWS_ACC_KEY}
+      "AWS_ACC_SECRET_KEY": ${self:custom.secrets.AWS_ACC_SECRET_KEY}
+      "USER_PASS": ${self:custom.secrets.USER_PASS}
+      "ADMIN_PASS": ${self:custom.secrets.ADMIN_PASS}
+      "JWT_SECRET": ${self:custom.secrets.JWT_SECRET}
+      "PORT": ${self:custom.secrets.PORT}
 custom:
   secrets: ${file(serverenv.json)}
